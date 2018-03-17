@@ -16,7 +16,9 @@ else
 	CMD:=@
 	SUM:=@echo
 endif
-OPTIMIZE = -Ofast -ffast-math -fomit-frame-pointer -ftree-vectorize -funroll-all-loops -fpeel-loops -ftracer -funswitch-loops -finline-functions -fno-strict-aliasing
+OPTIMIZE =  -O2 -mips32 -march=mips32 -mno-mips16 -fomit-frame-pointer -fno-builtin   \
+            -fno-common -Wno-write-strings -Wno-sign-compare -ffast-math -ftree-vectorize \
+			-funswitch-loops -fno-strict-aliasing
 INCLUDE = -I pocketsnes \
 		-I sal/linux/include -I sal/include \
 		-I pocketsnes/include \
