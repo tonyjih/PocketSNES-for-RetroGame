@@ -16,15 +16,16 @@ else
 	CMD:=@
 	SUM:=@echo
 endif
-OPTIMIZE = -O2 -ffast-math -fstrict-aliasing -fomit-frame-pointer -ftree-vectorize -funroll-all-loops -fpeel-loops -ftracer -funswitch-loops -finline-functions
+OPTIMIZE = -Ofast -ffast-math -fomit-frame-pointer -ftree-vectorize -funroll-all-loops -fpeel-loops -ftracer -funswitch-loops -finline-functions -fno-strict-aliasing
 INCLUDE = -I pocketsnes \
 		-I sal/linux/include -I sal/include \
 		-I pocketsnes/include \
 		-I menu -I pocketsnes/linux -I pocketsnes/snes9x \
-		-I/home/tonyjih/gh_retrogame_toolchain/mipsel-linux-gcc/usr/mipsel-buildroot-linux-uclibc/sysroot/usr/include/SDL
+		
 
 CFLAGS = $(INCLUDE) -DRC_OPTIMIZED -D__LINUX__ -D__DINGUX__ -DNO_ROM_BROWSER \
 		 -DGCW_ZERO \
+		 -DMIPS_XBURST \
 		 -g -O3 -pipe -ffast-math $(SDL_CFLAGS) \
 		 -flto $(OPTIMIZE)
 
