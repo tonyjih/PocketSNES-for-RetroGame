@@ -67,7 +67,8 @@ void sal_VideoBitmapScale(int startx, int starty, int viswidth, int visheight, i
       *dst++=buffer_mem[x>>16];
       x+=ix;
     } while (--W);
-    dst+=pitch;
+	//RS-97 fix
+    dst+=pitch + sal_VideoGetPitch()/4;
     y+=iy;
   } while (--H);
 }

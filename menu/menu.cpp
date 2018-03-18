@@ -798,7 +798,8 @@ static s32 SaveStateSelect(s32 mode)
 			case 5: 
 			{
 				u32 DestWidth = 205, DestHeight = 154;
-				sal_VideoBitmapScale(0, 0, SNES_WIDTH, SNES_HEIGHT, DestWidth, DestHeight, SAL_SCREEN_WIDTH - DestWidth, &mTempFb[0], (u16*)sal_VideoGetBuffer()+(SAL_SCREEN_WIDTH*(((202 + 16) - DestHeight)/2))+((262 - DestWidth)/2));
+				//RS-97 fix
+				sal_VideoBitmapScale(0, 0, SNES_WIDTH, SNES_HEIGHT, DestWidth, DestHeight, SAL_SCREEN_WIDTH - DestWidth, &mTempFb[0], (u16*)sal_VideoGetBuffer()+(SAL_SCREEN_WIDTH*2*(((202 + 16) - DestHeight)/2))+((262 - DestWidth)/2));
 
 				sal_VideoDrawRect(0, 186, 262, 16, SAL_RGB(22,0,0));
 
