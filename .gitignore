@@ -1,4 +1,4 @@
 *.o
-PocketSNES
+PocketSNES.elf
 PocketSNES.opk
 .opk_data
