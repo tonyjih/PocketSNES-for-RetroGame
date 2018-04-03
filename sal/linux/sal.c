@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <sys/time.h>
 #include "sal.h"
-
+#include "dma.h"
 #define PALETTE_BUFFER_LENGTH	256*2*4
 
 static SDL_Surface *mScreen = NULL;
@@ -223,7 +223,7 @@ u32 sal_VideoInit(u32 bpp)
 		SDL_DOUBLEBUF
 #endif*/
 		);
-    
+    dma_map_buffer();
     	//If there was an error in setting up the screen
     	if( mScreen == NULL )
     	{
@@ -298,7 +298,8 @@ void sal_VideoExitGame()
 #ifdef GCW_ZERO
 	if (SDL_MUSTLOCK(mScreen))
 		SDL_UnlockSurface(mScreen);
-	mScreen = SDL_SetVideoMode(320, 480, mBpp, SDL_SWSURFACE/* | SDL_DOUBLEBUF*/);
+	mScreen = SDL_SetVideoMode(320, 480, mBpp, SDL_HWSURFACE/* | SDL_DOUBLEBUF*/);
+
 	if (SDL_MUSTLOCK(mScreen))
 		SDL_LockSurface(mScreen);
 #endif
@@ -315,17 +316,17 @@ void sal_VideoBitmapDim(u16* img, u32 pixelCount)
 
 void sal_VideoFlip(s32 vsync)
 {
-	if (SDL_MUSTLOCK(mScreen)) {
-		SDL_UnlockSurface(mScreen); 
-		SDL_Flip(mScreen);
-		SDL_LockSurface(mScreen);
-	} else
-		SDL_Flip(mScreen);
+	// if (SDL_MUSTLOCK(mScreen)) {
+		// SDL_UnlockSurface(mScreen); 
+		// SDL_Flip(mScreen);
+		// SDL_LockSurface(mScreen);
+	// } else
+		// SDL_Flip(mScreen);
 }
 
 void *sal_VideoGetBuffer()
 {
-	return (void*)mScreen->pixels;
+	return (void*)dma_ptr;
 }
 
 void sal_VideoPaletteSync() 
@@ -342,6 +343,7 @@ void sal_VideoPaletteSet(u32 index, u32 color)
 
 void sal_Reset(void)
 {
+	dma_unmap_buffer();
 	sal_AudioClose();
 	SDL_Quit();
 }
