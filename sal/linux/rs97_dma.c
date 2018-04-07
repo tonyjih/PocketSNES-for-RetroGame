@@ -3,7 +3,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include "dma.h"
+#include "rs97_dma.h"
 
 int dma_fd;
 volatile uint16_t *dma_ptr = NULL;

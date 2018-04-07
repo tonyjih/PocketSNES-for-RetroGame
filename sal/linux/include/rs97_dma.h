@@ -1,5 +1,5 @@
-#ifndef _DMA_H_
-#define _DMA_H_
+#ifndef _RS97_DMA_H_
+#define _RS97_DMA_H_
 
 #include <SDL.h>
 #include <fcntl.h>

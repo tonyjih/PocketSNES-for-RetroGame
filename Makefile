@@ -1,4 +1,4 @@
-TARGET = PocketSNES.elf
+TARGET = bin/PocketSNES
 
 CROSS_COMPILE = mipsel-linux-
 CC  := $(CROSS_COMPILE)gcc

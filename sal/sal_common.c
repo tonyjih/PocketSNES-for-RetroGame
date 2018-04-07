@@ -15,8 +15,6 @@ which is a pain in the ass especially as I'm always changing things
 #include <zip.h>
 
 #include "sal_common.h"
-#include "dma.h"
-
 #define SAL_FRAME_BUFFER_COUNT	4
 
 u32 mInputRepeat=0;

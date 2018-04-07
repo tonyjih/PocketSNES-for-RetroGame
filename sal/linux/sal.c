@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <sys/time.h>
 #include "sal.h"
-#include "dma.h"
+#include "rs97_dma.h"
 #define PALETTE_BUFFER_LENGTH	256*2*4
 
 static SDL_Surface *mScreen = NULL;
@@ -324,10 +324,10 @@ void sal_VideoFlip(s32 vsync)
 		// SDL_Flip(mScreen);
 }
 
-void *sal_VideoGetBuffer()
-{
-	return (void*)dma_ptr;
-}
+// void *sal_VideoGetBuffer()
+// {
+	// return (void*)dma_ptr;
+// }
 
 void sal_VideoPaletteSync() 
 { 	
